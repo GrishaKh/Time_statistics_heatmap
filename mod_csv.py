@@ -4,7 +4,7 @@ import sys, getopt
 import csv
 
 def open_csv_file(filename):
-    return open(filename, "rb")
+    return open(filename, "r")
 
 def close_csv_file(fd):
     fd.close()
@@ -33,7 +33,7 @@ def strip_data(data):
 def minute_to_second(values):
     for val in values:
         new_val = val.replace("m", "").replace("s", "")
-        if unicode(new_val).isnumeric():
+        if str(new_val).isnumeric():
             new_val = str(int(new_val))
         if len(new_val) > 2:
             minute = int(new_val[:-2])

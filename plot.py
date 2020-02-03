@@ -54,7 +54,7 @@ def main():
     xticks = ['' for x in xticks]
     xticks[::int(len(xticks)/40)] = keptticks
 
-    fig = plt.figure(figsize=(50,50))
+    # fig = plt.figure(figsize=(10,10))
 
     colors = ["#66ff66","#00ff00", "#00b300", "#008000", "#004d00", "#ff6666", "#ff0000", "#b30000", "#800000"]
     cmap = sns.blend_palette(colors, 100)
@@ -64,7 +64,7 @@ def main():
     cmap2 = mpl.colors.ListedColormap(['#0000ff'])
     cmap3 = mpl.colors.ListedColormap(["Black"])
 
-    ticks = range(0,3601,100)
+    ticks = list(range(0,3601,100))
     ticks.append(1)
 
     cbar_kws = {"ticks":ticks}
@@ -72,9 +72,10 @@ def main():
     sns.heatmap(df, mask=(df != 0), cbar=False, linewidths=.5, cmap=cmap1, yticklabels=yticks, xticklabels=xticks, robust=True)
     sns.heatmap(df, mask=(df != -1), linewidths=.5, cbar=False, cmap=cmap2, yticklabels=yticks, xticklabels=xticks, robust=True)
     sns.heatmap(df, mask=(df != -2), linewidths=.5, cbar=False, cmap=cmap3, yticklabels=yticks, xticklabels=xticks, robust=True)
-    r.set_title("Original Heatmap")
+    r.set_title("Max 10 DSP heatmap")
 
     plt.yticks(rotation=0)
+    plt.xticks(rotation=0)
     plt.show()
 
 if __name__ == "__main__":
